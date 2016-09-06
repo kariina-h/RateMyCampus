@@ -174,7 +174,7 @@ public class frontEnd extends javax.swing.JFrame {
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setToolTipText("");
+        jTextField1.setToolTipText("Digite seu usuário");
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +206,9 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel33.setForeground(new java.awt.Color(183, 180, 180));
         jLabel33.setText("Ainda não é cadastrado?");
         jLabel33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jTextField2.setToolTipText("Digite sua senha");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
@@ -864,6 +867,9 @@ public class frontEnd extends javax.swing.JFrame {
                 jLabel39MouseClicked(evt);
             }
         });
+
+        jTextField3.setToolTipText("Digite sua senha");
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         javax.swing.GroupLayout CadastroLayout = new javax.swing.GroupLayout(Cadastro);
         Cadastro.setLayout(CadastroLayout);
