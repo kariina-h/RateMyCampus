@@ -9,24 +9,32 @@ import bancos.Conexao;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import static java.lang.Thread.sleep;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Ana
  */
+
+
 public class frontEnd extends javax.swing.JFrame {
 
     /**
      * Creates new form frontEnd
      */
+    
+    int user=0; 
+    
     public frontEnd() {
         initComponents();
         ConfTela();
@@ -104,10 +112,11 @@ public class frontEnd extends javax.swing.JFrame {
         Info = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
         Principal = new javax.swing.JPanel();
         Inicial = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -381,9 +390,6 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/campus.png"))); // NOI18N
-        Info.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 260, 150));
-
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Texto com a descrição do campus");
         Info.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 280, 30));
@@ -401,6 +407,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
+        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
 
         Interno.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 170));
 
@@ -1145,7 +1153,7 @@ public class frontEnd extends javax.swing.JFrame {
             Conexao conec = new Conexao();
             conec.getConexaoMySQL();
         
-            String sql2 = "Select login, senha from usuario";
+            String sql2 = "Select idusuario, login, senha, campususu, nome from usuario";
             Statement stm2 = conec.getConexao().createStatement();
             
             ResultSet RS2 = stm2.executeQuery(sql2);
@@ -1164,10 +1172,51 @@ public class frontEnd extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Dados Incorretos!");
             }
             while(RS2.next()){
-                if((jTextField1.getText().equals(RS2.getString(1))) && (senhacomparada.equals(RS2.getString(2)))){
-                    
+                if((jTextField1.getText().equals(RS2.getString(2))) && (senhacomparada.equals(RS2.getString(3)))){
+                    user= Integer.parseInt(RS2.getString(1));
+                    int campusUsu=0;
+                    campusUsu = Integer.parseInt(RS2.getString(4));
                     CardLayout spl = (CardLayout) Projeto.getLayout();
-                    spl.show(Projeto,"SplashScreen");
+                    
+                    
+                    
+                    jLabel1.setText(RS2.getString(5));
+                    conec.getConexaoMySQL(); 
+                    String sql3 = "Select logocampus, logouniversidade, descricao from campus where idcampus="+campusUsu;
+                    
+             
+            Statement stm3 = conec.getConexao().createStatement();
+            
+            ResultSet RS3 = stm3.executeQuery(sql3);
+            
+            if(RS3 == null){
+                JOptionPane.showMessageDialog(null, "Dados sobre o campus não encontrado!");
+            }
+            while(RS3.next()){
+            jLabel16.setText(RS3.getString(3));
+            Blob logoCampus = RS3.getBlob("logocampus");
+            int tamanhoimagemCampus = (int) logoCampus.length(); //Icone é meu blob
+        byte[] bytesCampus  = logoCampus.getBytes(1, tamanhoimagemCampus); //Transforma em bytes
+        ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
+        
+        Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
+        Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+        iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
+        
+        jLabel58.setIcon(iconCampus); //Define o Label como Imagem
+         Blob logoUniversidade = RS3.getBlob("logouniversidade");
+            int tamanhoimagemUniversidade = (int) logoUniversidade.length(); //Icone é meu blob
+        byte[] bytesUniversidade = logoUniversidade.getBytes(1, tamanhoimagemUniversidade); //Transforma em bytes
+        ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
+        
+        Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
+        Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+        iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
+        
+        jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
+            }
+             spl.show(Projeto,"SplashScreen");
+                    
                     this.setVisible(true);
                    
                     runSplash();//Abre o SplashScreen
@@ -1366,7 +1415,6 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel SplashScreen;
     private javax.swing.JPanel Voto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1417,6 +1465,8 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
