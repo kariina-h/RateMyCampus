@@ -10,9 +10,12 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.lang.Thread.sleep;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +30,49 @@ public class frontEnd extends javax.swing.JFrame {
     public frontEnd() {
         initComponents();
         ConfTela();
+    }
+    
+    public void runSplash()
+    {
+        new Thread(){
+           
+            public void run ()
+            {
+               
+                for(int i = 0; i<101; i++){
+                    try 
+                    {
+                        jProgressBar1.setValue(i);
+                       
+                        if(jProgressBar1.getValue() <= 40){
+                            jLabel55.setText("Carregando arquivos...");
+ 
+                        }else if(jProgressBar1.getValue() <=65){
+                            jLabel55.setText("Montando interface...");
+                        }else if (jProgressBar1.getValue()<=80){
+                            jLabel55.setText("Quase pronto...");
+                        }
+                        else if (jProgressBar1.getValue() == 100){
+                            sleep(20);
+                            
+                            CardLayout cl = (CardLayout) Projeto.getLayout();
+                            cl.show(Projeto, "Interno");
+                            //this.SetVisible(true);
+
+                            CardLayout cls = (CardLayout) Principal.getLayout();
+                            cls.show(Principal, "Inicial");
+                            //this.setVisible(true);  
+                        }
+                            
+                        sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                   
+                }
+            }
+           
+        }.start();
     }
 
     /**
@@ -113,6 +159,10 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JPasswordField();
+        SplashScreen = new javax.swing.JPanel();
+        jLabel56 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel55 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Projeto"); // NOI18N
@@ -176,7 +226,7 @@ public class frontEnd extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel30))
                             .addComponent(jTextField2))))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -837,7 +887,7 @@ public class frontEnd extends javax.swing.JFrame {
                                 .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                                 .addComponent(jTextField3)))))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         CadastroLayout.setVerticalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -866,6 +916,40 @@ public class frontEnd extends javax.swing.JFrame {
         );
 
         Projeto.add(Cadastro, "Cadastro");
+
+        jLabel56.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vitor\\Documents\\GitHub\\RateMyCampus\\Projeto\\src\\my\\frontEnd\\imagens\\logo.png")); // NOI18N
+
+        jProgressBar1.setStringPainted(true);
+
+        jLabel55.setText("Teste");
+
+        javax.swing.GroupLayout SplashScreenLayout = new javax.swing.GroupLayout(SplashScreen);
+        SplashScreen.setLayout(SplashScreenLayout);
+        SplashScreenLayout.setHorizontalGroup(
+            SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SplashScreenLayout.createSequentialGroup()
+                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel55)))
+                .addGap(0, 559, Short.MAX_VALUE))
+        );
+        SplashScreenLayout.setVerticalGroup(
+            SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SplashScreenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(233, 233, 233))
+        );
+
+        Projeto.add(SplashScreen, "SplashScreen");
 
         getContentPane().add(Projeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
 
@@ -1067,13 +1151,12 @@ public class frontEnd extends javax.swing.JFrame {
             }
             while(RS2.next()){
                 if((jTextField1.getText().equals(RS2.getString(1))) && (senhacomparada.equals(RS2.getString(2)))){
-                    CardLayout cl = (CardLayout) Projeto.getLayout();
-                    cl.show(Projeto, "Interno");
+                    
+                    CardLayout spl = (CardLayout) Projeto.getLayout();
+                    spl.show(Projeto,"SplashScreen");
                     this.setVisible(true);
-
-                    CardLayout cls = (CardLayout) Principal.getLayout();
-                    cls.show(Principal, "Inicial");
-                    this.setVisible(true);
+                   
+                    runSplash();//Abre o SplashScreen
                     
                     resposta = 0;
                 }
@@ -1266,6 +1349,7 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel Principal;
     private javax.swing.JPanel Projeto;
+    private javax.swing.JPanel SplashScreen;
     private javax.swing.JPanel Voto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1317,10 +1401,13 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
