@@ -54,6 +54,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
         Info = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -264,6 +265,16 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
+        jLabel53.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(150, 147, 147));
+        jLabel53.setText("Laboratório");
+        jLabel53.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel53MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -276,8 +287,9 @@ public class frontEnd extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
@@ -295,7 +307,9 @@ public class frontEnd extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel53)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         Interno.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, 410));
@@ -879,7 +893,7 @@ public class frontEnd extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) Principal.getLayout();
         cl.show(Principal, "Busca");
         this.setVisible(true);  
-        // oi
+        
         String teste = jLabel4.getText();        
         jLabel11.setText(teste);
         jLabel13.setText(teste);
@@ -891,6 +905,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Docente"
         jLabel4.setForeground(Color.decode("#0D9EAB")); // docente
@@ -912,6 +927,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Inicial"
         jLabel3.setForeground(Color.decode("#0D9EAB")); // inicial
@@ -933,6 +949,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel4.setForeground(Color.decode("#969393")); // docente
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Biblioteca"
         jLabel8.setForeground(Color.decode("#0D9EAB")); // biblioteca
@@ -954,6 +971,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Restaurante"
         jLabel5.setForeground(Color.decode("#0D9EAB")); // restaurante
@@ -975,6 +993,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Sala"
         jLabel6.setForeground(Color.decode("#0D9EAB")); // sala
@@ -996,6 +1015,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Curso"
         jLabel7.setForeground(Color.decode("#0D9EAB")); // curso
@@ -1178,6 +1198,28 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseClicked
 
+    private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Principal.getLayout();
+        cl.show(Principal, "Busca");
+        this.setVisible(true);
+        
+        String teste = jLabel53.getText();        
+        jLabel11.setText(teste);
+        jLabel13.setText(teste);
+        jLabel51.setText(teste);
+        
+        jLabel3.setForeground(Color.decode("#969393")); // inicial
+        jLabel5.setForeground(Color.decode("#969393")); // restaurante
+        jLabel4.setForeground(Color.decode("#969393")); // docente
+        jLabel7.setForeground(Color.decode("#969393")); // curso
+        jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel6.setForeground(Color.decode("#969393")); // sala
+        
+        // ativa a cor em "Sala"
+        jLabel53.setForeground(Color.decode("#0D9EAB")); // laboratorio
+    }//GEN-LAST:event_jLabel53MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1273,6 +1315,7 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
