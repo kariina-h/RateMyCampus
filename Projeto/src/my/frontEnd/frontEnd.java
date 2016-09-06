@@ -1042,7 +1042,9 @@ public class frontEnd extends javax.swing.JFrame {
             for(k = 0; k < senhadigitada.length; k++){
                 senhacomparada += senhadigitada[k];
             }
-            
+            if(RS2 == null){
+                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+            }
             while(RS2.next()){
                 if((jTextField1.getText().equals(RS2.getString(1))) && (senhacomparada.equals(RS2.getString(2)))){
                     CardLayout cl = (CardLayout) Projeto.getLayout();
