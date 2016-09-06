@@ -169,6 +169,7 @@ public class frontEnd extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Projeto.setPreferredSize(new java.awt.Dimension(1002, 580));
         Projeto.setLayout(new java.awt.CardLayout());
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
@@ -226,7 +227,7 @@ public class frontEnd extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel30))
                             .addComponent(jTextField2))))
-                .addContainerGap(464, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -887,7 +888,7 @@ public class frontEnd extends javax.swing.JFrame {
                                 .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                                 .addComponent(jTextField3)))))
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         CadastroLayout.setVerticalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -917,7 +918,10 @@ public class frontEnd extends javax.swing.JFrame {
 
         Projeto.add(Cadastro, "Cadastro");
 
-        jLabel56.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vitor\\Documents\\GitHub\\RateMyCampus\\Projeto\\src\\my\\frontEnd\\imagens\\logo.png")); // NOI18N
+        SplashScreen.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel56.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo.png"))); // NOI18N
 
         jProgressBar1.setStringPainted(true);
 
@@ -928,25 +932,29 @@ public class frontEnd extends javax.swing.JFrame {
         SplashScreenLayout.setHorizontalGroup(
             SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SplashScreenLayout.createSequentialGroup()
-                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(jLabel56)
+                .addGap(36, 36, 36)
                 .addGroup(SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(SplashScreenLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SplashScreenLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(77, 77, 77)
                         .addComponent(jLabel55)))
-                .addGap(0, 559, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         SplashScreenLayout.setVerticalGroup(
             SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SplashScreenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel55)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(233, 233, 233))
+            .addGroup(SplashScreenLayout.createSequentialGroup()
+                .addGroup(SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel56))
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         Projeto.add(SplashScreen, "SplashScreen");
