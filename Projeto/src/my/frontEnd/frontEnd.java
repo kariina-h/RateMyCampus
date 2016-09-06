@@ -879,7 +879,7 @@ public class frontEnd extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) Principal.getLayout();
         cl.show(Principal, "Busca");
         this.setVisible(true);  
-        
+        // oi
         String teste = jLabel4.getText();        
         jLabel11.setText(teste);
         jLabel13.setText(teste);
