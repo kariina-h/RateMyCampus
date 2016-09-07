@@ -9,24 +9,78 @@ import bancos.Conexao;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
+import static java.lang.Thread.sleep;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Ana
  */
+
+
 public class frontEnd extends javax.swing.JFrame {
 
     /**
      * Creates new form frontEnd
      */
+    
+    int user=0; 
+    
     public frontEnd() {
         initComponents();
         ConfTela();
+    }
+    
+    public void runSplash()
+    {
+        new Thread(){
+           
+            public void run ()
+            {
+               
+                for(int i = 0; i<101; i++){
+                    try 
+                    {
+                        jProgressBar1.setValue(i);
+                       
+                        if(jProgressBar1.getValue() <= 40){
+                            jLabel55.setText("Carregando arquivos...");
+ 
+                        }else if(jProgressBar1.getValue() <=65){
+                            jLabel55.setText("Montando interface...");
+                        }else if (jProgressBar1.getValue()<=80){
+                            jLabel55.setText("Quase pronto...");
+                        }
+                        else if (jProgressBar1.getValue() == 100){
+                            sleep(20);
+                            
+                            CardLayout cl = (CardLayout) Projeto.getLayout();
+                            cl.show(Projeto, "Interno");
+                            //this.SetVisible(true);
+
+                            CardLayout cls = (CardLayout) Principal.getLayout();
+                            cls.show(Principal, "Inicial");
+                            //this.setVisible(true);  
+                        }
+                            
+                        sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                   
+                }
+            }
+           
+        }.start();
     }
 
     /**
@@ -54,13 +108,15 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
         Info = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
         Principal = new javax.swing.JPanel();
         Inicial = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -112,17 +168,22 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JPasswordField();
+        SplashScreen = new javax.swing.JPanel();
+        jLabel56 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel55 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Projeto"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Projeto.setPreferredSize(new java.awt.Dimension(1002, 580));
         Projeto.setLayout(new java.awt.CardLayout());
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setToolTipText("");
+        jTextField1.setToolTipText("Digite seu usuário");
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +215,9 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel33.setForeground(new java.awt.Color(183, 180, 180));
         jLabel33.setText("Ainda não é cadastrado?");
         jLabel33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jTextField2.setToolTipText("Digite sua senha");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
@@ -264,6 +328,16 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
+        jLabel53.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(150, 147, 147));
+        jLabel53.setText("Laboratório");
+        jLabel53.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel53MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -276,8 +350,9 @@ public class frontEnd extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
@@ -295,7 +370,9 @@ public class frontEnd extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel53)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         Interno.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, 410));
@@ -312,9 +389,6 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/campus.png"))); // NOI18N
-        Info.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 260, 150));
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Texto com a descrição do campus");
@@ -333,6 +407,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
+        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
 
         Interno.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 170));
 
@@ -800,6 +876,9 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setToolTipText("Digite sua senha");
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
         javax.swing.GroupLayout CadastroLayout = new javax.swing.GroupLayout(Cadastro);
         Cadastro.setLayout(CadastroLayout);
         CadastroLayout.setHorizontalGroup(
@@ -853,6 +932,47 @@ public class frontEnd extends javax.swing.JFrame {
 
         Projeto.add(Cadastro, "Cadastro");
 
+        SplashScreen.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel56.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo.png"))); // NOI18N
+
+        jProgressBar1.setStringPainted(true);
+
+        jLabel55.setText("Teste");
+
+        javax.swing.GroupLayout SplashScreenLayout = new javax.swing.GroupLayout(SplashScreen);
+        SplashScreen.setLayout(SplashScreenLayout);
+        SplashScreenLayout.setHorizontalGroup(
+            SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SplashScreenLayout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(jLabel56)
+                .addGap(36, 36, 36)
+                .addGroup(SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel55)))
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+        SplashScreenLayout.setVerticalGroup(
+            SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SplashScreenLayout.createSequentialGroup()
+                .addGroup(SplashScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel56))
+                    .addGroup(SplashScreenLayout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        Projeto.add(SplashScreen, "SplashScreen");
+
         getContentPane().add(Projeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
 
         pack();
@@ -891,6 +1011,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Docente"
         jLabel4.setForeground(Color.decode("#0D9EAB")); // docente
@@ -912,6 +1033,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Inicial"
         jLabel3.setForeground(Color.decode("#0D9EAB")); // inicial
@@ -933,6 +1055,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel4.setForeground(Color.decode("#969393")); // docente
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Biblioteca"
         jLabel8.setForeground(Color.decode("#0D9EAB")); // biblioteca
@@ -954,6 +1077,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Restaurante"
         jLabel5.setForeground(Color.decode("#0D9EAB")); // restaurante
@@ -975,6 +1099,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Sala"
         jLabel6.setForeground(Color.decode("#0D9EAB")); // sala
@@ -996,6 +1121,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
         
         // ativa a cor em "Curso"
         jLabel7.setForeground(Color.decode("#0D9EAB")); // curso
@@ -1027,7 +1153,7 @@ public class frontEnd extends javax.swing.JFrame {
             Conexao conec = new Conexao();
             conec.getConexaoMySQL();
         
-            String sql2 = "Select login, senha from usuario";
+            String sql2 = "Select idusuario, login, senha, campususu, nome from usuario";
             Statement stm2 = conec.getConexao().createStatement();
             
             ResultSet RS2 = stm2.executeQuery(sql2);
@@ -1042,16 +1168,58 @@ public class frontEnd extends javax.swing.JFrame {
             for(k = 0; k < senhadigitada.length; k++){
                 senhacomparada += senhadigitada[k];
             }
-            
+            if(RS2 == null){
+                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+            }
             while(RS2.next()){
-                if((jTextField1.getText().equals(RS2.getString(1))) && (senhacomparada.equals(RS2.getString(2)))){
-                    CardLayout cl = (CardLayout) Projeto.getLayout();
-                    cl.show(Projeto, "Interno");
+                if((jTextField1.getText().equals(RS2.getString(2))) && (senhacomparada.equals(RS2.getString(3)))){
+                    user= Integer.parseInt(RS2.getString(1));
+                    int campusUsu=0;
+                    campusUsu = Integer.parseInt(RS2.getString(4));
+                    CardLayout spl = (CardLayout) Projeto.getLayout();
+                    
+                    
+                    
+                    jLabel1.setText(RS2.getString(5));
+                    conec.getConexaoMySQL(); 
+                    String sql3 = "Select logocampus, logouniversidade, descricao from campus where idcampus="+campusUsu;
+                    
+             
+            Statement stm3 = conec.getConexao().createStatement();
+            
+            ResultSet RS3 = stm3.executeQuery(sql3);
+            
+            if(RS3 == null){
+                JOptionPane.showMessageDialog(null, "Dados sobre o campus não encontrado!");
+            }
+            while(RS3.next()){
+            jLabel16.setText(RS3.getString(3));
+            Blob logoCampus = RS3.getBlob("logocampus");
+            int tamanhoimagemCampus = (int) logoCampus.length(); //Icone é meu blob
+        byte[] bytesCampus  = logoCampus.getBytes(1, tamanhoimagemCampus); //Transforma em bytes
+        ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
+        
+        Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
+        Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+        iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
+        
+        jLabel58.setIcon(iconCampus); //Define o Label como Imagem
+         Blob logoUniversidade = RS3.getBlob("logouniversidade");
+            int tamanhoimagemUniversidade = (int) logoUniversidade.length(); //Icone é meu blob
+        byte[] bytesUniversidade = logoUniversidade.getBytes(1, tamanhoimagemUniversidade); //Transforma em bytes
+        ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
+        
+        Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
+        Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+        iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
+        
+        jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
+            }
+             spl.show(Projeto,"SplashScreen");
+                    
                     this.setVisible(true);
-
-                    CardLayout cls = (CardLayout) Principal.getLayout();
-                    cls.show(Principal, "Inicial");
-                    this.setVisible(true);
+                   
+                    runSplash();//Abre o SplashScreen
                     
                     resposta = 0;
                 }
@@ -1065,6 +1233,8 @@ public class frontEnd extends javax.swing.JFrame {
         catch(SQLException e){
             System.out.println(e);
         }
+        
+        //teste
     }//GEN-LAST:event_jLabel32MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -1174,6 +1344,28 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseClicked
 
+    private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Principal.getLayout();
+        cl.show(Principal, "Busca");
+        this.setVisible(true);
+        
+        String teste = jLabel53.getText();        
+        jLabel11.setText(teste);
+        jLabel13.setText(teste);
+        jLabel51.setText(teste);
+        
+        jLabel3.setForeground(Color.decode("#969393")); // inicial
+        jLabel5.setForeground(Color.decode("#969393")); // restaurante
+        jLabel4.setForeground(Color.decode("#969393")); // docente
+        jLabel7.setForeground(Color.decode("#969393")); // curso
+        jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel6.setForeground(Color.decode("#969393")); // sala
+        
+        // ativa a cor em "Sala"
+        jLabel53.setForeground(Color.decode("#0D9EAB")); // laboratorio
+    }//GEN-LAST:event_jLabel53MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1220,9 +1412,9 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel Principal;
     private javax.swing.JPanel Projeto;
+    private javax.swing.JPanel SplashScreen;
     private javax.swing.JPanel Voto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1269,11 +1461,17 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
