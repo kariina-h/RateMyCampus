@@ -1146,9 +1146,7 @@ public class frontEnd extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-        
-        
-        
+               
         try{
             Conexao conec = new Conexao();
             conec.getConexaoMySQL();
@@ -1194,26 +1192,34 @@ public class frontEnd extends javax.swing.JFrame {
             }
             while(RS3.next()){
             jLabel16.setText(RS3.getString(3));
-            Blob logoCampus = RS3.getBlob("logocampus");
-            int tamanhoimagemCampus = (int) logoCampus.length(); //Icone é meu blob
-        byte[] bytesCampus  = logoCampus.getBytes(1, tamanhoimagemCampus); //Transforma em bytes
-        ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
+            
+            if(RS3.getBlob("logocampus") != null){
+                Blob logoCampus = RS3.getBlob("logocampus");
+                int tamanhoimagemCampus = (int) logoCampus.length(); //Icone é meu blob
+                byte[] bytesCampus  = logoCampus.getBytes(1, tamanhoimagemCampus); //Transforma em bytes
+                ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
         
-        Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
-        Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
-        iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
+                Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
+                Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
         
-        jLabel58.setIcon(iconCampus); //Define o Label como Imagem
-         Blob logoUniversidade = RS3.getBlob("logouniversidade");
-            int tamanhoimagemUniversidade = (int) logoUniversidade.length(); //Icone é meu blob
-        byte[] bytesUniversidade = logoUniversidade.getBytes(1, tamanhoimagemUniversidade); //Transforma em bytes
-        ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
+                jLabel58.setIcon(iconCampus); //Define o Label como Imagem
+            }
+            
+            if(RS3.getBlob("logouniversidade") != null){
+                Blob logoUniversidade = RS3.getBlob("logouniversidade");
+                int tamanhoimagemUniversidade = (int) logoUniversidade.length(); //Icone é meu blob
+                byte[] bytesUniversidade = logoUniversidade.getBytes(1, tamanhoimagemUniversidade); //Transforma em bytes
+                ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
         
-        Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
-        Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
-        iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
+                Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
+                Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
         
-        jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
+                jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
+            
+            }
+            
             }
              spl.show(Projeto,"SplashScreen");
                     
@@ -1234,7 +1240,7 @@ public class frontEnd extends javax.swing.JFrame {
             System.out.println(e);
         }
         
-        //teste
+        //AE
     }//GEN-LAST:event_jLabel32MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
