@@ -181,6 +181,11 @@ public class frontEnd extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
+        Perfil = new javax.swing.JPanel();
+        jLabel61 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JPasswordField();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
         Cadastro = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -411,11 +416,17 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Nome do Usuário");
         jLabel1.setToolTipText("Perfil");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 150, 40));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 150, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
@@ -873,6 +884,63 @@ public class frontEnd extends javax.swing.JFrame {
 
         Principal.add(Voto, "Voto");
 
+        Perfil.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel61.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel61.setText("Perfil");
+        jLabel61.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel61MouseClicked(evt);
+            }
+        });
+
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField6.setToolTipText("Digite sua senha");
+        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        jLabel62.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel62.setText("Alterar senha:");
+
+        jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/salvar.png"))); // NOI18N
+        jLabel63.setText("jLabel39");
+        jLabel63.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel63.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel63MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PerfilLayout = new javax.swing.GroupLayout(Perfil);
+        Perfil.setLayout(PerfilLayout);
+        PerfilLayout.setHorizontalGroup(
+            PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PerfilLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(375, Short.MAX_VALUE))
+        );
+        PerfilLayout.setVerticalGroup(
+            PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PerfilLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel61)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(213, Short.MAX_VALUE))
+        );
+
+        Principal.add(Perfil, "Perfil");
+
         Interno.add(Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 850, 410));
 
         Projeto.add(Interno, "Interno");
@@ -968,7 +1036,6 @@ public class frontEnd extends javax.swing.JFrame {
                             .addComponent(jLabel60, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel59, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(CadastroLayout.createSequentialGroup()
                                 .addGap(95, 95, 95)
@@ -1531,6 +1598,29 @@ public class frontEnd extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboBuscaActionPerformed
 
+    private void jLabel61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel61MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel61MouseClicked
+
+    private void jLabel63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel63MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel63MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Principal.getLayout();
+        cl.show(Principal, "Perfil");
+        this.setVisible(true);
+                
+        jLabel4.setForeground(Color.decode("#969393")); // docente
+        jLabel5.setForeground(Color.decode("#969393")); // restaurante
+        jLabel6.setForeground(Color.decode("#969393")); // sala
+        jLabel7.setForeground(Color.decode("#969393")); // curso
+        jLabel8.setForeground(Color.decode("#969393")); // biblioteca
+        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        jLabel3.setForeground(Color.decode("#969393")); // inicial
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1575,6 +1665,7 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel Interno;
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Menu;
+    private javax.swing.JPanel Perfil;
     private javax.swing.JPanel Principal;
     private javax.swing.JPanel Projeto;
     private javax.swing.JPanel SplashScreen;
@@ -1637,6 +1728,9 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1651,5 +1745,6 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JPasswordField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
