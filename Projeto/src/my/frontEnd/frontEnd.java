@@ -452,7 +452,7 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(183, 180, 180));
-        jLabel20.setText("Média da Biblioteca");
+        jLabel20.setText("Média dos Cursos");
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(183, 180, 180));
@@ -512,7 +512,7 @@ public class frontEnd extends javax.swing.JFrame {
                         .addGroup(InicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel25))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addGap(48, 48, 48))
         );
@@ -1365,6 +1365,7 @@ public class frontEnd extends javax.swing.JFrame {
                     runSplash();//Abre o SplashScreen
                     
                     resposta = 0;
+                    mostrarMelhoresRates();
                 }
                 
             }
@@ -1649,4 +1650,70 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTable tabelaBusca;
     // End of variables declaration//GEN-END:variables
+void mostrarMelhoresRates() throws SQLException{
+        /*
+        double rateBiblio=0;
+        double melhorRateBiblio=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaBiblio = "Select acervo, atendimento, organizacao, infraestrutura, materiaisdisponiveis from avaliacaobiblioteca";
+            
+            Statement stmAvaliaBiblio = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaBiblio = stmAvaliaBiblio.executeQuery(sqAvaliaBiblio);
+                        
+            if(RSAvaliaBiblio == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, Biblioteca!");
+            }else{
+                while(RSAvaliaBiblio.next()){
+                    rateBiblio = (RSAvaliaBiblio.getDouble(1)+RSAvaliaBiblio.getDouble(2)+RSAvaliaBiblio.getDouble(3)+RSAvaliaBiblio.getDouble(4)+RSAvaliaBiblio.getDouble(5))/5;
+                    if(rateBiblio>melhorRateBiblio){
+                        melhorRateBiblio=rateBiblio;
+                    }
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        melhorEstrutura.setText(melhorRateBiblio+"");
+
+        */
+    
+        double rateCurso=0;
+        double mediaCurso=0;
+        int idCurso=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaCurso = "Select curso, avg(catalogo) as mediaCat, avg(evasao) as mediaEv, avg(professores) as mediaProf "
+                    + "from avaliacaocurso where curso in (select idcurso from curso where campuscur= "+campus+") group by curso";
+            
+            Statement stmAvaliaCurso = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaCurso = stmAvaliaCurso.executeQuery(sqAvaliaCurso);
+                        
+            if(RSAvaliaCurso == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
+            }else{
+                while(RSAvaliaCurso.next()){
+                    rateCurso = (RSAvaliaCurso.getDouble("mediaCat")+RSAvaliaCurso.getDouble("mediaEv")+RSAvaliaCurso.getDouble("mediaProf"))/3;
+                    mediaCurso = mediaCurso + rateCurso;
+                    idCurso ++;
+                   
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        jLabel26.setText(mediaCurso/idCurso+"");
+    }
 }

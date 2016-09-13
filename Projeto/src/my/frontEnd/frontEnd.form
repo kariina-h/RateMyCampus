@@ -565,7 +565,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="222" max="32767" attributes="0"/>
+                              <EmptySpace pref="223" max="32767" attributes="0"/>
                               <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
@@ -677,7 +677,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b4" green="b4" red="b7" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="M&#xe9;dia da Biblioteca"/>
+                        <Property name="text" type="java.lang.String" value="M&#xe9;dia dos Cursos"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel22">
