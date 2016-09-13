@@ -74,7 +74,7 @@ public class frontEnd extends javax.swing.JFrame {
                             jLabel55.setText("Quase pronto...");
                         }
                         else if (jProgressBar1.getValue() == 100){
-                            sleep(20);
+                            sleep(30);
                             
                             CardLayout cl = (CardLayout) Projeto.getLayout();
                             cl.show(Projeto, "Interno");
@@ -88,7 +88,7 @@ public class frontEnd extends javax.swing.JFrame {
                             
                         }
                             
-                        sleep(50);
+                        sleep(75);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -200,8 +200,11 @@ public class frontEnd extends javax.swing.JFrame {
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextField1.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(13, 157, 171));
         jTextField1.setToolTipText("Digite seu usuário");
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jTextField1.setName(""); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -233,6 +236,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel33.setText("Ainda não é cadastrado?");
         jLabel33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField2.setToolTipText("Digite sua senha");
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
@@ -868,6 +872,8 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_mini.png"))); // NOI18N
 
+        jTextField4.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(13, 157, 171));
         jTextField4.setToolTipText("Digite seu E-mail");
         jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -876,6 +882,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(13, 157, 171));
         jTextField5.setToolTipText("Digite seu nome");
         jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -911,6 +919,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(13, 157, 171));
         jTextField3.setToolTipText("Digite sua senha");
         jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
@@ -972,9 +982,11 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel56.setBackground(new java.awt.Color(255, 255, 255));
         jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo.png"))); // NOI18N
 
-        jProgressBar1.setForeground(new java.awt.Color(0, 45, 97));
+        jProgressBar1.setForeground(new java.awt.Color(13, 157, 171));
         jProgressBar1.setStringPainted(true);
 
+        jLabel55.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(13, 157, 171));
         jLabel55.setText("Teste");
 
         javax.swing.GroupLayout SplashScreenLayout = new javax.swing.GroupLayout(SplashScreen);
@@ -1179,6 +1191,8 @@ public class frontEnd extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        jTextField1.setText("");
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
@@ -1363,6 +1377,7 @@ public class frontEnd extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) Projeto.getLayout();
         cl.show(Projeto, "Login");
+        jTextField2.setText("");
         this.setVisible(true);
     }//GEN-LAST:event_jLabel50MouseClicked
 
