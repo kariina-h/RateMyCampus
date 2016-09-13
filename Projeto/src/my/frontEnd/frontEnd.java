@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import static java.lang.Thread.sleep;
+import java.net.URL;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,6 +51,10 @@ public class frontEnd extends javax.swing.JFrame {
             Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
+        
+        URL urlicone = getClass().getResource("/my/frontEnd/imagens/logo.png");
+        Image icone = Toolkit.getDefaultToolkit().getImage(urlicone);
+        this.setIconImage(icone);
         ConfTela();
     }
     
