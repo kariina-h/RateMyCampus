@@ -115,8 +115,8 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
         Principal = new javax.swing.JPanel();
         Inicial = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -385,7 +385,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel1.setText("Nome do Usuário");
         jLabel1.setToolTipText("Perfil");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 120, 40));
+        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 160, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
@@ -407,8 +407,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
-        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
-        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
+        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 140, 140));
+        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 140, 140));
 
         Interno.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 170));
 
