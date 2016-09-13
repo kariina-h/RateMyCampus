@@ -42,8 +42,8 @@ DEFAULT CHARACTER SET = latin1;
 CREATE  TABLE IF NOT EXISTS `mydb`.`usuario` (
   `idusuario` INT(11) NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
-  `login` VARCHAR(20) NOT NULL ,
-  `senha` VARCHAR(20) NOT NULL ,
+  `login` VARCHAR(45) NOT NULL ,
+  `senha` VARCHAR(45) NOT NULL ,
   `email` VARCHAR(45) NOT NULL ,
   `tipousuario` INT(11) NOT NULL ,
   `campususu` INT(11) NULL DEFAULT NULL ,
