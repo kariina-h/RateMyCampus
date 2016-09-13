@@ -12,7 +12,6 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import static java.lang.Thread.sleep;
-import java.net.URL;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
@@ -37,8 +37,8 @@ public class frontEnd extends javax.swing.JFrame {
      * Creates new form frontEnd
      */
     
-    int user=0;
-    int campus=0;
+    int user=0; 
+    int campus=-1;
     
     public frontEnd() {
         try {
@@ -53,10 +53,6 @@ public class frontEnd extends javax.swing.JFrame {
             Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
-        
-        URL urlicone = getClass().getResource("/my/frontEnd/imagens/logo.png");
-        Image icone = Toolkit.getDefaultToolkit().getImage(urlicone);
-        this.setIconImage(icone);
         ConfTela();
     }
     
@@ -131,7 +127,6 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
         Info = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -176,11 +171,6 @@ public class frontEnd extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        Perfil = new javax.swing.JPanel();
-        jLabel61 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JPasswordField();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
         Cadastro = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -190,9 +180,6 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JPasswordField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
         SplashScreen = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -357,16 +344,6 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
 
-        jLabel53.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(150, 147, 147));
-        jLabel53.setText("Laboratório");
-        jLabel53.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel53MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -379,9 +356,8 @@ public class frontEnd extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
@@ -399,9 +375,7 @@ public class frontEnd extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel53)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         Interno.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, 410));
@@ -411,17 +385,10 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Nome do Usuário");
         jLabel1.setToolTipText("Perfil");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 150, 20));
+        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 120, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
@@ -448,12 +415,8 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
-
-        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_unicamp.png"))); // NOI18N
-        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, 140));
-
-        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/ft_logo.png"))); // NOI18N
-        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 20, 140, 140));
+        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
+        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
 
         comboBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         comboBusca.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -605,12 +568,10 @@ public class frontEnd extends javax.swing.JFrame {
         tabelaBusca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "Nota"
             }
         ));
         jScrollPane1.setViewportView(tabelaBusca);
@@ -620,9 +581,9 @@ public class frontEnd extends javax.swing.JFrame {
         BuscaLayout.setHorizontalGroup(
             BuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BuscaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         BuscaLayout.setVerticalGroup(
             BuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,63 +773,6 @@ public class frontEnd extends javax.swing.JFrame {
 
         Principal.add(Voto, "Voto");
 
-        Perfil.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel61.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel61.setText("Perfil");
-        jLabel61.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel61.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel61MouseClicked(evt);
-            }
-        });
-
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField6.setToolTipText("Digite sua senha");
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        jLabel62.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel62.setText("Alterar senha:");
-
-        jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/salvar.png"))); // NOI18N
-        jLabel63.setText("jLabel39");
-        jLabel63.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel63.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel63MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PerfilLayout = new javax.swing.GroupLayout(Perfil);
-        Perfil.setLayout(PerfilLayout);
-        PerfilLayout.setHorizontalGroup(
-            PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PerfilLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(375, Short.MAX_VALUE))
-        );
-        PerfilLayout.setVerticalGroup(
-            PerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PerfilLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel61)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
-        );
-
-        Principal.add(Perfil, "Perfil");
-
         Interno.add(Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 850, 410));
 
         Projeto.add(Interno, "Interno");
@@ -933,48 +837,30 @@ public class frontEnd extends javax.swing.JFrame {
         jTextField3.setToolTipText("Digite sua senha");
         jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel10.setText("Senha:");
-
-        jLabel59.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel59.setText("Nome:");
-
-        jLabel60.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel60.setText("Email:");
-
         javax.swing.GroupLayout CadastroLayout = new javax.swing.GroupLayout(Cadastro);
         Cadastro.setLayout(CadastroLayout);
         CadastroLayout.setHorizontalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CadastroLayout.createSequentialGroup()
                         .addComponent(jLabel36)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(667, Short.MAX_VALUE))
-                    .addGroup(CadastroLayout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel60, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel59, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(CadastroLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(60, 60, 60))))
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(CadastroLayout.createSequentialGroup()
+                            .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(CadastroLayout.createSequentialGroup()
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(41, 41, 41)
+                            .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                                .addComponent(jTextField3)))))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         CadastroLayout.setVerticalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,26 +872,16 @@ public class frontEnd extends javax.swing.JFrame {
                     .addGroup(CadastroLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel36)))
-                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(71, 71, 71)
+                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CadastroLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(CadastroLayout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3)))
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)))
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField3)))
+                .addGap(35, 35, 35)
                 .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1086,6 +962,7 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);  
         
         String teste = jLabel4.getText();        
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1095,10 +972,48 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Docente"
         jLabel4.setForeground(Color.decode("#0D9EAB")); // docente
+        
+        Conexao conec = new Conexao();
+        conec.getConexaoMySQL();
+        
+        
+        Object[][] dados = null;
+        
+        DefaultTableModel model = new DefaultTableModel(dados,
+            new Object[] { "Nome do Docente", "Descrição" });
+        
+        try {
+            String sqlbusca1 = "Select nomeprofessor, descricaoprofessor from professor";
+            Statement stmbusca1 = conec.getConexao().createStatement();
+            ResultSet RS2 = stmbusca1.executeQuery(sqlbusca1);
+            
+            
+            
+            
+            
+            while(RS2.next()){
+                String b1 = RS2.getString(1);
+                String b2 = RS2.getString(2);
+                
+                model.addRow(new Object[]{b1, b2});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        //JTable tabelaBusca = new  JTable(model);
+        tabelaBusca.setModel(model);
+        
+        
+        
+        //JOptionPane.showMessageDialog(null, campus);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -1108,6 +1023,7 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel3.getText();        
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1116,7 +1032,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Inicial"
         jLabel3.setForeground(Color.decode("#0D9EAB")); // inicial
@@ -1176,11 +1092,12 @@ public class frontEnd extends javax.swing.JFrame {
         
         //JTable tabelaBusca = new  JTable(model);
         tabelaBusca.setModel(model);
+
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-         CardLayout cl = (CardLayout) Principal.getLayout();
+        CardLayout cl = (CardLayout) Principal.getLayout();
         cl.show(Principal, "Busca");
         this.setVisible(true);
         
@@ -1232,6 +1149,7 @@ public class frontEnd extends javax.swing.JFrame {
         
         //JTable tabelaBusca = new  JTable(model);
         tabelaBusca.setModel(model);
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -1288,6 +1206,7 @@ public class frontEnd extends javax.swing.JFrame {
         
         //JTable tabelaBusca = new  JTable(model);
         tabelaBusca.setModel(model);
+
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -1344,6 +1263,7 @@ public class frontEnd extends javax.swing.JFrame {
         
         //JTable tabelaBusca = new  JTable(model);
         tabelaBusca.setModel(model);
+
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -1390,6 +1310,7 @@ public class frontEnd extends javax.swing.JFrame {
                     user= Integer.parseInt(RS2.getString(1));
                     int campusUsu=0;
                     campusUsu = Integer.parseInt(RS2.getString(4));
+                    campus = campusUsu;
                     CardLayout spl = (CardLayout) Projeto.getLayout();
                     
                     
@@ -1416,7 +1337,7 @@ public class frontEnd extends javax.swing.JFrame {
                 ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
         
                 Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
-                Image newimgCampus = imgCampus.getScaledInstance( 125, 130,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
                 iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
         
                 jLabel58.setIcon(iconCampus); //Define o Label como Imagem
@@ -1429,10 +1350,9 @@ public class frontEnd extends javax.swing.JFrame {
                 ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
         
                 Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
-                Image newimgUniversidade = imgUniversidade.getScaledInstance( 128, 135,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
                 iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
         
-                //jLabel57.setSize(150, 140);
                 jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
             
             }
@@ -1559,27 +1479,6 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseClicked
 
-    private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) Principal.getLayout();
-        cl.show(Principal, "Busca");
-        this.setVisible(true);
-        
-        String teste = jLabel53.getText();        
-        jLabel13.setText(teste);
-        jLabel51.setText(teste);
-        
-        jLabel3.setForeground(Color.decode("#969393")); // inicial
-        jLabel5.setForeground(Color.decode("#969393")); // restaurante
-        jLabel4.setForeground(Color.decode("#969393")); // docente
-        jLabel7.setForeground(Color.decode("#969393")); // curso
-        jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel6.setForeground(Color.decode("#969393")); // sala
-        
-        // ativa a cor em "Sala"
-        jLabel53.setForeground(Color.decode("#0D9EAB")); // laboratorio
-    }//GEN-LAST:event_jLabel53MouseClicked
-
     private void jLabel49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel49MouseClicked
         comboBusca.setVisible(true);
         comboBusca.setEnabled(true);
@@ -1640,29 +1539,6 @@ public class frontEnd extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboBuscaActionPerformed
 
-    private void jLabel61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel61MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel61MouseClicked
-
-    private void jLabel63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel63MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel63MouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) Principal.getLayout();
-        cl.show(Principal, "Perfil");
-        this.setVisible(true);
-                
-        jLabel4.setForeground(Color.decode("#969393")); // docente
-        jLabel5.setForeground(Color.decode("#969393")); // restaurante
-        jLabel6.setForeground(Color.decode("#969393")); // sala
-        jLabel7.setForeground(Color.decode("#969393")); // curso
-        jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
-        jLabel3.setForeground(Color.decode("#969393")); // inicial
-    }//GEN-LAST:event_jLabel1MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -1707,14 +1583,12 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel Interno;
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Menu;
-    private javax.swing.JPanel Perfil;
     private javax.swing.JPanel Principal;
     private javax.swing.JPanel Projeto;
     private javax.swing.JPanel SplashScreen;
     private javax.swing.JPanel Voto;
     private javax.swing.JComboBox<String> comboBusca;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1752,18 +1626,12 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1779,7 +1647,6 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JPasswordField jTextField6;
     private javax.swing.JTable tabelaBusca;
     // End of variables declaration//GEN-END:variables
 }
