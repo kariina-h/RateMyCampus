@@ -406,7 +406,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel1.setText("Nome do Usuário");
         jLabel1.setToolTipText("Perfil");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 120, 40));
+        Info.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 150, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_sem_fundo.png"))); // NOI18N
         Info.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 164, 124));
@@ -433,8 +433,12 @@ public class frontEnd extends javax.swing.JFrame {
             }
         });
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
-        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
-        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
+
+        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo_unicamp.png"))); // NOI18N
+        Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, 140));
+
+        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/ft_logo.png"))); // NOI18N
+        Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 20, 140, 140));
 
         comboBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         comboBusca.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -1252,7 +1256,7 @@ public class frontEnd extends javax.swing.JFrame {
                 ImageIcon iconCampus = new ImageIcon(bytesCampus ); //Remonta como Icone
         
                 Image imgCampus = iconCampus.getImage() ;  //Remonta como Imagem
-                Image newimgCampus = imgCampus.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                Image newimgCampus = imgCampus.getScaledInstance( 125, 130,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
                 iconCampus = new ImageIcon( newimgCampus ); //Remonta como Icone
         
                 jLabel58.setIcon(iconCampus); //Define o Label como Imagem
@@ -1265,9 +1269,10 @@ public class frontEnd extends javax.swing.JFrame {
                 ImageIcon iconUniversidade = new ImageIcon(bytesUniversidade); //Remonta como Icone
         
                 Image imgUniversidade = iconUniversidade.getImage() ;  //Remonta como Imagem
-                Image newimgUniversidade = imgUniversidade.getScaledInstance( 132, 132,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
+                Image newimgUniversidade = imgUniversidade.getScaledInstance( 128, 135,  java.awt.Image.SCALE_SMOOTH ) ;   //Redimensiona
                 iconUniversidade = new ImageIcon( newimgUniversidade ); //Remonta como Icone
         
+                //jLabel57.setSize(150, 140);
                 jLabel57.setIcon(iconUniversidade); //Define o Label como Imagem
             
             }
