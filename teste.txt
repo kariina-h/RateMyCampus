@@ -1,6 +1,1 @@
-<<<<<<< HEAD
-ol·aaaaaaa ! teste
-=======
-ol·aaaaaaa ! teste + teste
-vitor
->>>>>>> origin/Elabora√ß√£o1
+oi ! teste
