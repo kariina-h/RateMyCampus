@@ -1715,5 +1715,37 @@ void mostrarMelhoresRates() throws SQLException{
             System.out.println(e);
         }
         jLabel26.setText(mediaCurso/idCurso+"");
+        
+        double rateSala=0;
+        double mediaSala=0;
+        int idSala=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaSala = "Select sala, avg(higiene) as mediaHig, avg(infraestrutura) as mediaInfra, avg(materiaisdisponiveis) as mediaMatDisp , avg(condicaodosmaterias) as mediaCondMat "
+                    + "from avaliacaosala where sala in (select idsala from sala where campussal= "+campus+") group by sala";
+            
+            Statement stmAvaliaSala = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaCurso = stmAvaliaSala.executeQuery(sqAvaliaSala);
+                        
+            if(RSAvaliaCurso == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
+            }else{
+                while(RSAvaliaCurso.next()){
+                    rateSala = (RSAvaliaCurso.getDouble("mediaHig")+RSAvaliaCurso.getDouble("mediaInfra")+RSAvaliaCurso.getDouble("mediaCondMat")+RSAvaliaCurso.getDouble("mediaMatDisp"))/4;
+                    mediaSala = mediaSala + rateSala;
+                    idSala ++;
+                   
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        jLabel24.setText(mediaSala/idSala+"");
     }
 }
