@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,7 +37,8 @@ public class frontEnd extends javax.swing.JFrame {
      * Creates new form frontEnd
      */
     
-    int user=0; 
+    int user=0;
+    int campus=0;
     
     public frontEnd() {
         try {
@@ -155,15 +157,8 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         Busca = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaBusca = new javax.swing.JTable();
         Detalhes = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -607,101 +602,34 @@ public class frontEnd extends javax.swing.JFrame {
 
         Busca.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel11.setText("Busca");
-
-        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel12.setText("Breve descrição sobre o item");
-
-        jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(13, 158, 171));
-        jLabel28.setText("Título do item");
-        jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel28MouseClicked(evt);
+        tabelaBusca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(13, 158, 171));
-        jLabel37.setText("Título do item");
-        jLabel37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel37MouseClicked(evt);
-            }
-        });
-
-        jLabel40.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel40.setText("Breve descrição sobre o item");
-
-        jLabel41.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(13, 158, 171));
-        jLabel41.setText("Título do item");
-        jLabel41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel41MouseClicked(evt);
-            }
-        });
-
-        jLabel42.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel42.setText("Breve descrição sobre o item");
-
-        jLabel43.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(13, 158, 171));
-        jLabel43.setText("Título do item");
-        jLabel43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel43MouseClicked(evt);
-            }
-        });
-
-        jLabel44.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel44.setText("Breve descrição sobre o item");
+        ));
+        jScrollPane1.setViewportView(tabelaBusca);
 
         javax.swing.GroupLayout BuscaLayout = new javax.swing.GroupLayout(Busca);
         Busca.setLayout(BuscaLayout);
         BuscaLayout.setHorizontalGroup(
             BuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BuscaLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(BuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel43)
-                    .addComponent(jLabel44))
-                .addContainerGap(660, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(388, Short.MAX_VALUE))
         );
         BuscaLayout.setVerticalGroup(
             BuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BuscaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel40)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel42)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel43)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel44)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Principal.add(Busca, "Busca");
@@ -1158,7 +1086,6 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);  
         
         String teste = jLabel4.getText();        
-        jLabel11.setText(teste);
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1181,7 +1108,6 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel3.getText();        
-        jLabel11.setText(teste);
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1203,7 +1129,7 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel8.getText();        
-        jLabel11.setText(teste);
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1212,20 +1138,54 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel4.setForeground(Color.decode("#969393")); // docente
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Biblioteca"
         jLabel8.setForeground(Color.decode("#0D9EAB")); // biblioteca
+        
+        Conexao conec = new Conexao();
+        conec.getConexaoMySQL();
+        
+        
+        Object[][] dados = null;
+        
+        DefaultTableModel model = new DefaultTableModel(dados,
+            new Object[] { "Nome da Biblioteca", "Descrição" });
+        
+        try {
+            String sqlbusca1 = "Select nomebiblioteca, descricaobiblioteca from biblioteca";
+            Statement stmbusca1 = conec.getConexao().createStatement();
+            ResultSet RS2 = stmbusca1.executeQuery(sqlbusca1);
+            
+            
+            
+            
+            
+            while(RS2.next()){
+                String b1 = RS2.getString(1);
+                String b2 = RS2.getString(2);
+                
+                model.addRow(new Object[]{b1, b2});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        //JTable tabelaBusca = new  JTable(model);
+        tabelaBusca.setModel(model);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        CardLayout cl = (CardLayout) Principal.getLayout();
+         CardLayout cl = (CardLayout) Principal.getLayout();
         cl.show(Principal, "Busca");
         this.setVisible(true);
         
         String teste = jLabel5.getText();        
-        jLabel11.setText(teste);
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1234,10 +1194,44 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Restaurante"
         jLabel5.setForeground(Color.decode("#0D9EAB")); // restaurante
+        
+        Conexao conec = new Conexao();
+        conec.getConexaoMySQL();
+        
+        
+        Object[][] dados = null;
+        
+        DefaultTableModel model = new DefaultTableModel(dados,
+            new Object[] { "Nome do Restaurante", "Descrição" });
+        
+        try {
+            String sqlbusca1 = "Select nomerestaurante, descricaorestaurante from restaurante";
+            Statement stmbusca1 = conec.getConexao().createStatement();
+            ResultSet RS2 = stmbusca1.executeQuery(sqlbusca1);
+            
+            
+            
+            
+            
+            while(RS2.next()){
+                String b1 = RS2.getString(1);
+                String b2 = RS2.getString(2);
+                
+                model.addRow(new Object[]{b1, b2});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        //JTable tabelaBusca = new  JTable(model);
+        tabelaBusca.setModel(model);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -1247,7 +1241,7 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel6.getText();        
-        jLabel11.setText(teste);
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1256,10 +1250,44 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel7.setForeground(Color.decode("#969393")); // curso
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Sala"
         jLabel6.setForeground(Color.decode("#0D9EAB")); // sala
+        
+        Conexao conec = new Conexao();
+        conec.getConexaoMySQL();
+        
+        
+        Object[][] dados = null;
+        
+        DefaultTableModel model = new DefaultTableModel(dados,
+            new Object[] { "Nome da Sala", "Descrição" });
+        
+        try {
+            String sqlbusca1 = "Select nomesala, descricaosala from sala";
+            Statement stmbusca1 = conec.getConexao().createStatement();
+            ResultSet RS2 = stmbusca1.executeQuery(sqlbusca1);
+            
+            
+            
+            
+            
+            while(RS2.next()){
+                String b1 = RS2.getString(1);
+                String b2 = RS2.getString(2);
+                
+                model.addRow(new Object[]{b1, b2});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        //JTable tabelaBusca = new  JTable(model);
+        tabelaBusca.setModel(model);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -1269,7 +1297,7 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel7.getText();        
-        jLabel11.setText(teste);
+        
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1278,18 +1306,45 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel6.setForeground(Color.decode("#969393")); // sala
         jLabel4.setForeground(Color.decode("#969393")); // docente
         jLabel8.setForeground(Color.decode("#969393")); // biblioteca
-        jLabel53.setForeground(Color.decode("#969393")); // laboratorio
+        
         
         // ativa a cor em "Curso"
         jLabel7.setForeground(Color.decode("#0D9EAB")); // curso
+        
+        Conexao conec = new Conexao();
+        conec.getConexaoMySQL();
+        
+        
+        Object[][] dados = null;
+        
+        DefaultTableModel model = new DefaultTableModel(dados,
+            new Object[] { "Nome do Curso", "Descrição" });
+        
+        try {
+            String sqlbusca1 = "Select nomecurso, descricaocurso from curso";
+            Statement stmbusca1 = conec.getConexao().createStatement();
+            ResultSet RS2 = stmbusca1.executeQuery(sqlbusca1);
+            
+            
+            
+            
+            
+            while(RS2.next()){
+                String b1 = RS2.getString(1);
+                String b2 = RS2.getString(2);
+                
+                model.addRow(new Object[]{b1, b2});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        //JTable tabelaBusca = new  JTable(model);
+        tabelaBusca.setModel(model);
     }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout) Principal.getLayout();
-        cl.show(Principal, "Detalhes");
-        this.setVisible(true);
-    }//GEN-LAST:event_jLabel28MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
@@ -1471,18 +1526,6 @@ public class frontEnd extends javax.swing.JFrame {
         comboBusca.setEnabled(false);
     }//GEN-LAST:event_jLabel38MouseClicked
 
-    private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel37MouseClicked
-
-    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel41MouseClicked
-
-    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel43MouseClicked
-
     private void jLabel50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel50MouseClicked
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) Projeto.getLayout();
@@ -1523,7 +1566,6 @@ public class frontEnd extends javax.swing.JFrame {
         this.setVisible(true);
         
         String teste = jLabel53.getText();        
-        jLabel11.setText(teste);
         jLabel13.setText(teste);
         jLabel51.setText(teste);
         
@@ -1673,8 +1715,6 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1691,7 +1731,6 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1701,15 +1740,9 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
@@ -1740,11 +1773,13 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField jTextField2;
     private javax.swing.JPasswordField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JPasswordField jTextField6;
+    private javax.swing.JTable tabelaBusca;
     // End of variables declaration//GEN-END:variables
 }
