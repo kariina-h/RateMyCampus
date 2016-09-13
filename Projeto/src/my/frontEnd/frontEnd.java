@@ -20,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -36,6 +38,17 @@ public class frontEnd extends javax.swing.JFrame {
     int user=0; 
     
     public frontEnd() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(frontEnd.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         ConfTela();
     }
@@ -47,7 +60,7 @@ public class frontEnd extends javax.swing.JFrame {
             public void run ()
             {
                
-                for(int i = 0; i<101; i++){
+                for(int i = 0; i<101; i+=2){
                     try 
                     {
                         jProgressBar1.setValue(i);
@@ -69,7 +82,10 @@ public class frontEnd extends javax.swing.JFrame {
 
                             CardLayout cls = (CardLayout) Principal.getLayout();
                             cls.show(Principal, "Inicial");
-                            //this.setVisible(true);  
+                            //this.setVisible(true);
+                            comboBusca.setVisible(false);
+                            comboBusca.setEnabled(false);
+                            
                         }
                             
                         sleep(50);
@@ -117,6 +133,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel50 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
+        comboBusca = new javax.swing.JComboBox<>();
         Principal = new javax.swing.JPanel();
         Inicial = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -396,6 +413,11 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/busca_campus.png"))); // NOI18N
         jLabel49.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel49.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel49MouseClicked(evt);
+            }
+        });
         Info.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, 40));
 
         jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/power.png"))); // NOI18N
@@ -409,6 +431,19 @@ public class frontEnd extends javax.swing.JFrame {
         Info.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
         Info.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 100, 100));
         Info.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 120, 90));
+
+        comboBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        comboBusca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                comboBuscaFocusLost(evt);
+            }
+        });
+        comboBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBuscaActionPerformed(evt);
+            }
+        });
+        Info.add(comboBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, 160, 40));
 
         Interno.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 170));
 
@@ -937,6 +972,7 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel56.setBackground(new java.awt.Color(255, 255, 255));
         jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/frontEnd/imagens/logo.png"))); // NOI18N
 
+        jProgressBar1.setForeground(new java.awt.Color(0, 45, 97));
         jProgressBar1.setStringPainted(true);
 
         jLabel55.setText("Teste");
@@ -1146,7 +1182,9 @@ public class frontEnd extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-               
+        
+        
+        
         try{
             Conexao conec = new Conexao();
             conec.getConexaoMySQL();
@@ -1240,7 +1278,7 @@ public class frontEnd extends javax.swing.JFrame {
             System.out.println(e);
         }
         
-        //AE
+        //teste
     }//GEN-LAST:event_jLabel32MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -1304,6 +1342,9 @@ public class frontEnd extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) Projeto.getLayout();
         cl.show(Projeto, "Login");
         this.setVisible(true);
+        
+        comboBusca.setVisible(false);
+        comboBusca.setEnabled(false);
     }//GEN-LAST:event_jLabel38MouseClicked
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
@@ -1372,6 +1413,66 @@ public class frontEnd extends javax.swing.JFrame {
         jLabel53.setForeground(Color.decode("#0D9EAB")); // laboratorio
     }//GEN-LAST:event_jLabel53MouseClicked
 
+    private void jLabel49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel49MouseClicked
+        comboBusca.setVisible(true);
+        comboBusca.setEnabled(true);
+        
+        Conexao conec = new Conexao(); // INSTANCIA UM OBJETO DA CLASSSE Conexao
+        conec.getConexaoMySQL();       // REALIZA O MÉTODO DE CONEXÃO COM O BANCO
+
+	String sql3 = "Select nomecampus from campus"; // OPERAÇÃO SQL DESEJADA
+        
+        try{
+            Statement stm3 = conec.getConexao().createStatement(); // REALIZA A OPERAÇÃO SQL - STATEMENT - PELO JAVA
+            ResultSet RS3 = stm3.executeQuery(sql3); // REUNE TODAS AS LINHAS RESULTANTES DA OPERAÇÃO
+            
+            //ArrayList lista = new ArrayList();
+            
+            int c2 = 0, numlinhas = 0;
+            
+
+            while(RS3.next()){
+                numlinhas++;                
+            }
+            
+            while(RS3.previous()){                
+            }
+            
+            Object[] campus = new Object[numlinhas];
+            
+            if(comboBusca.getItemCount() > 1){
+                
+            }
+            else{
+                while(RS3.next()){
+                campus[c2] = RS3.getObject(1);
+                c2++;
+                comboBusca.addItem(RS3.getString(1));
+                //JOptionPane.showMessageDialog(null, "Ta foda");
+                }
+            }
+            
+            //comboBusca.addItem(campus);
+            
+            
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jLabel49MouseClicked
+
+    private void comboBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboBuscaFocusLost
+        comboBusca.setEnabled(false);
+        comboBusca.setVisible(false);
+    }//GEN-LAST:event_comboBuscaFocusLost
+
+    private void comboBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuscaActionPerformed
+        if(comboBusca.getSelectedItem() == ""){
+            comboBusca.setEnabled(false);
+            comboBusca.setVisible(false);
+        }
+    }//GEN-LAST:event_comboBuscaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1420,6 +1521,7 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel Projeto;
     private javax.swing.JPanel SplashScreen;
     private javax.swing.JPanel Voto;
+    private javax.swing.JComboBox<String> comboBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
