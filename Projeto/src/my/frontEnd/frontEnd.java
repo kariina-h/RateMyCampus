@@ -448,7 +448,7 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(183, 180, 180));
-        jLabel9.setText("Melhor Professor");
+        jLabel9.setText("Média dos Professores");
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(183, 180, 180));
@@ -456,11 +456,11 @@ public class frontEnd extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(183, 180, 180));
-        jLabel22.setText("Melhor Estrutura");
+        jLabel22.setText("Média da estrutura");
 
         jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(183, 180, 180));
-        jLabel23.setText("Média da Sala");
+        jLabel23.setText("Média das Salas");
 
         jLabel24.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(13, 158, 171));
@@ -512,7 +512,7 @@ public class frontEnd extends javax.swing.JFrame {
                         .addGroup(InicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel25))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addGap(48, 48, 48))
         );
@@ -1372,6 +1372,7 @@ public class frontEnd extends javax.swing.JFrame {
             
             if(resposta == 1){
                 JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+                jTextField2.setText("");
             }
         }
         catch(SQLException e){
@@ -1651,39 +1652,7 @@ public class frontEnd extends javax.swing.JFrame {
     private javax.swing.JTable tabelaBusca;
     // End of variables declaration//GEN-END:variables
 void mostrarMelhoresRates() throws SQLException{
-        /*
-        double rateBiblio=0;
-        double melhorRateBiblio=0;
-            
-        try{
-           
-            Conexao conec = new Conexao();
-    
-            conec.getConexaoMySQL();
-        
-            String sqAvaliaBiblio = "Select acervo, atendimento, organizacao, infraestrutura, materiaisdisponiveis from avaliacaobiblioteca";
-            
-            Statement stmAvaliaBiblio = conec.getConexao().createStatement();
-            
-            ResultSet RSAvaliaBiblio = stmAvaliaBiblio.executeQuery(sqAvaliaBiblio);
-                        
-            if(RSAvaliaBiblio == null){
-                JOptionPane.showMessageDialog(null, "Não possui dados, Biblioteca!");
-            }else{
-                while(RSAvaliaBiblio.next()){
-                    rateBiblio = (RSAvaliaBiblio.getDouble(1)+RSAvaliaBiblio.getDouble(2)+RSAvaliaBiblio.getDouble(3)+RSAvaliaBiblio.getDouble(4)+RSAvaliaBiblio.getDouble(5))/5;
-                    if(rateBiblio>melhorRateBiblio){
-                        melhorRateBiblio=rateBiblio;
-                    }
-                }
-            }
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-        melhorEstrutura.setText(melhorRateBiblio+"");
 
-        */
-    
         double rateCurso=0;
         double mediaCurso=0;
         int idCurso=0;
@@ -1726,18 +1695,18 @@ void mostrarMelhoresRates() throws SQLException{
     
             conec.getConexaoMySQL();
         
-            String sqAvaliaSala = "Select sala, avg(higiene) as mediaHig, avg(infraestrutura) as mediaInfra, avg(materiaisdisponiveis) as mediaMatDisp , avg(condicaodosmaterias) as mediaCondMat "
+            String sqAvaliaSala = "Select sala, avg(higiene) as mediaHig, avg(infraestrutura) as mediaInfra, avg(materiaisdisponiveis) as mediaMatDisp , avg(condicaodosmateriais) as mediaCondMat "
                     + "from avaliacaosala where sala in (select idsala from sala where campussal= "+campus+") group by sala";
             
             Statement stmAvaliaSala = conec.getConexao().createStatement();
             
-            ResultSet RSAvaliaCurso = stmAvaliaSala.executeQuery(sqAvaliaSala);
+            ResultSet RSAvaliaSala = stmAvaliaSala.executeQuery(sqAvaliaSala);
                         
-            if(RSAvaliaCurso == null){
+            if(RSAvaliaSala == null){
                 JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
             }else{
-                while(RSAvaliaCurso.next()){
-                    rateSala = (RSAvaliaCurso.getDouble("mediaHig")+RSAvaliaCurso.getDouble("mediaInfra")+RSAvaliaCurso.getDouble("mediaCondMat")+RSAvaliaCurso.getDouble("mediaMatDisp"))/4;
+                while(RSAvaliaSala.next()){
+                    rateSala = (RSAvaliaSala.getDouble("mediaHig")+RSAvaliaSala.getDouble("mediaInfra")+RSAvaliaSala.getDouble("mediaCondMat")+RSAvaliaSala.getDouble("mediaMatDisp"))/4;
                     mediaSala = mediaSala + rateSala;
                     idSala ++;
                    
@@ -1747,5 +1716,102 @@ void mostrarMelhoresRates() throws SQLException{
             System.out.println(e);
         }
         jLabel24.setText(mediaSala/idSala+"");
+        
+        double rateProf=0;
+        double mediaProf=0;
+        int idProf=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaProf = "Select professor, avg(didatica) as mediaDidat, avg(usodemateriais) as mediaUsoMat, avg(pontualidade) as mediaPont , avg(comprometimento) as mediaComp "
+                    + "from avaliacaoprofessor where professor in (select idprofessor from professor where campusprof= "+campus+") group by professor";
+            
+            Statement stmAvaliaProf = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaProf = stmAvaliaProf.executeQuery(sqAvaliaProf);
+                        
+            if(RSAvaliaProf == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
+            }else{
+                while(RSAvaliaProf.next()){
+                    rateProf = (RSAvaliaProf.getDouble("mediaDidat")+RSAvaliaProf.getDouble("mediaUsoMat")+RSAvaliaProf.getDouble("mediaPont")+RSAvaliaProf.getDouble("mediaComp"))/4;
+                    mediaProf = mediaProf + rateProf;
+                    idProf ++;
+                   
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        jLabel25.setText(mediaProf/idProf+"");
+        
+        double rateBiblio=0;
+        double mediaBiblio=0;
+        int idBiblio=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaBiblio = "Select biblioteca, avg(acervo) as mediaAcervo, avg(atendimento) as mediaAtend, avg(organizacao) as mediaOrg, avg(infraestrutura) as mediaInfra, avg(materiaisdisponiveis) as mediaMatDisp "
+                    + "from avaliacaobiblioteca where biblioteca in (select idbiblioteca from biblioteca where campusbiblio= "+campus+") group by biblioteca";
+            
+            Statement stmAvaliaBiblio = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaBiblio = stmAvaliaBiblio.executeQuery(sqAvaliaBiblio);
+                        
+            if(RSAvaliaBiblio == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
+            }else{
+                while(RSAvaliaBiblio.next()){
+                    rateBiblio = (RSAvaliaBiblio.getDouble("mediaAcervo")+RSAvaliaBiblio.getDouble("mediaAtend")+RSAvaliaBiblio.getDouble("mediaInfra")+RSAvaliaBiblio.getDouble("mediaMatDisp")+RSAvaliaBiblio.getDouble("mediaOrg"))/5;
+                    mediaBiblio = mediaBiblio + rateBiblio;
+                    idBiblio ++;
+                   
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        double rateRest=0;
+        double mediaRest=0;
+        int idRest=0;
+            
+        try{
+           
+            Conexao conec = new Conexao();
+    
+            conec.getConexaoMySQL();
+        
+            String sqAvaliaRest = "Select restaurante, avg(preco) as mediaPreco, avg(refeicoes) as mediaRef, avg(higiene) as mediaHig, avg(logistica) as mediaLog, avg(infraestrutura) as mediaInfra "
+                    
+                    + "from avaliacaorestaurante where restaurante in (select idrestaurante from restaurante where campusres= "+campus+") group by restaurante";
+            
+            Statement stmAvaliaRest = conec.getConexao().createStatement();
+            
+            ResultSet RSAvaliaRest = stmAvaliaRest.executeQuery(sqAvaliaRest);
+                        
+            if(RSAvaliaRest == null){
+                JOptionPane.showMessageDialog(null, "Não possui dados, curso!");
+            }else{
+                while(RSAvaliaRest.next()){
+                    rateRest = (RSAvaliaRest.getDouble("mediaPreco")+RSAvaliaRest.getDouble("mediaRef")+RSAvaliaRest.getDouble("mediaHig")+RSAvaliaRest.getDouble("mediaLog")+RSAvaliaRest.getDouble("mediaInfra"))/5;
+                    mediaRest = mediaRest + rateRest;
+                    idRest ++;
+                   
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        jLabel27.setText(((mediaRest/idRest)+(mediaBiblio/idBiblio))/2+"");
     }
 }
