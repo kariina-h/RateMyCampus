@@ -1,17 +1,21 @@
 | Desenvolvimento
 |   * Banco de dados (DBRateMyCampus- tabelas; insertsRateMyCampus - dados)
 |
+| Diagramas
+|   * Diagrama de caso de uso
+|   * Diagrama de domínio
+|   * Diagrama de sequência
+|
 | Documentos
-|   * Caso de uso
 |   * Caso de uso textual
 |   * Cenário
 |   * Designação de requisitos
-|   * Diagrama de domínio
 |   * Formulario de informação de risco
 |   * Glossário
 |   * História dos requisitos
 |   * Matriz de rastreabilidade
 |   * Plano de negócio
+|   * Questionário
 |
 | Entrevista
 |   * Entrevista do dia 12/08
