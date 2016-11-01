@@ -1,0 +1,19 @@
+[Usuário]
+[Visitante]^[Usuário]
+[Frequentador do Campus]^[Usuário]
+[Funcionário]^[Frequentador do Campus]
+[Professor^[Frequentador do Campus]
+[Aluno]^[Frequentador do Campus]
+[Usuário]-(Cadastrar Usuário)
+[Usuário]-(Fazer Login)
+[Usuário]-(Consultar Professor)
+[Usuário]-(Consultar Biblioteca)
+[Usuário]-(Consultar Restaurante)
+[Usuário]-(Consultar Sala de Aula)
+[Usuário]-(Consultar Curso)
+[Usuário]-(Consultar Campus)
+[Frequentador do Campus]-(Avaliar Biblioteca)
+[Frequentador do Campus]-(Avaliar Restaurante)
+[Frequentador do Campus]-(Avaliar Sala de Aula)
+[Aluno]-(Avaliar Professor)
+[Aluno]-(Avaliar Curso)
